@@ -1,0 +1,125 @@
+/* Reset margin */
+body {
+    margin: 0;
+  }
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* translucent black */
+    color: #fff;
+    z-index: 1000;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    backdrop-filter: blur(6px); /* optional: for frosted glass effect */
+    -webkit-backdrop-filter: blur(6px); /* Safari support */
+    overflow: hidden; /* Prevent horizontal overflow */
+  }
+  
+  
+  .logo {
+    margin: 0;
+    font-size: 1.25rem;
+    white-space: nowrap; /* Prevent logo from wrapping */
+    flex-shrink: 0; /* Prevent logo from shrinking */
+  }
+  
+  .menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    flex-shrink: 0; /* Prevent button from shrinking */
+  }
+  
+  /* Desktop Nav */
+  .nav-links {
+    display: flex;
+    gap: 0.5rem; /* Reduced gap to prevent overflow */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    justify-content: flex-end;
+    flex: 1; /* Take remaining space */
+    margin-left: 1rem; /* Space between logo and nav */
+  }
+  
+  .nav-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 0.875rem; /* Slightly smaller font */
+    cursor: pointer;
+    padding: 0.5rem 0.25rem; /* Reduced horizontal padding */
+    text-transform: none;
+    white-space: nowrap; /* Prevent text wrapping within buttons */
+    min-width: 0; /* Allow buttons to shrink */
+    flex-shrink: 1; /* Allow buttons to shrink */
+  }
+  
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.5rem;
+    z-index: 999;
+  }
+  
+  .mobile-nav-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    text-align: left;
+    padding: 0.5rem 0;
+    cursor: pointer;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .nav-links {
+      gap: 0.25rem; /* Even smaller gap for medium screens */
+    }
+    
+    .nav-button {
+      font-size: 0.8rem; /* Smaller font for medium screens */
+      padding: 0.5rem 0.15rem; /* Smaller padding */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+    .menu-button {
+      display: block;
+    }
+    
+    .header {
+      padding: 0.75rem 1rem; /* Reduced padding on mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .logo {
+      font-size: 1rem; /* Smaller logo on very small screens */
+    }
+    
+    .header {
+      padding: 0.75rem 0.5rem; /* Minimal padding on very small screens */
+    }
+  }
