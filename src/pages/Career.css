@@ -1,127 +1,325 @@
 .career-container {
   min-height: 100vh;
-  padding: 4rem clamp(1rem, 4vw, 3rem) 2rem clamp(1rem, 4vw, 3rem);
-  background: #090808;  color: #fff;
+  padding: 6rem clamp(1rem, 4vw, 3rem) 4rem clamp(1rem, 4vw, 3rem);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background elements */
+.career-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: float 15s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.career-container > * {
+  position: relative;
+  z-index: 1;
 }
 
 .career-title {
-  font-size: 2.2rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 1rem;
   text-align: center;
-  color: #ff4081;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.career-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+  border-radius: 2px;
 }
 
 .career-subtitle {
   font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
   text-align: center;
-  color: #7f5cff;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
 }
 
 .career-jobs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .career-job {
-  background: #222;
-  border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(255,64,129,0.10);
-  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(255, 255, 255, 0.1);
+  padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.career-job::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.career-job:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.career-job:hover::before {
+  opacity: 1;
 }
 
 .career-job h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
-  color: #00e0ff;
+  margin: 0 0 1rem 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
 }
 
 .career-job p {
-  margin: 0 0 1rem 0;
-  color: #eee;
+  margin: 0 0 1.5rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .career-apply-btn {
-  background-color: #ff4081;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
   color: #fff;
   border: none;
-  padding: 0.5rem 1.2rem;
-  border-radius: 4px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.2s;
-  box-shadow: 0 1px 8px rgba(127,92,255,0.08);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.career-apply-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
 .career-apply-btn:hover {
-  background-color: #e73370;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(135deg, #ff5252 0%, #d63031 100%);
+}
+
+.career-apply-btn:hover::before {
+  left: 100%;
+}
+
+.career-apply-btn:active {
+  transform: translateY(0);
 }
 
 .career-form {
-  background: #222;
-  border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(0,224,255,0.10);
-  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(255, 255, 255, 0.1);
+  padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   max-width: 500px;
   margin: 0 auto;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.career-form:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(255, 255, 255, 0.15);
 }
 
 .career-form-title {
   margin: 0 0 1rem 0;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   text-align: center;
-  color: #7f5cff;
+  color: #fff;
+  font-weight: 600;
 }
 
 .career-input {
-  padding: 0.75rem 1rem;
-  border-radius: 4px;
-  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
   font-size: 1rem;
-  background: #181818;
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
   margin-bottom: 0.5rem;
-  box-shadow: 0 1px 8px rgba(255,64,129,0.08);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.career-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .career-input:focus {
-  outline: 2px solid #ff4081;
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.career-input:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .career-submit-btn {
-  background-color: #ff4081;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
   color: #fff;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.2s;
-  box-shadow: 0 1px 8px rgba(127,92,255,0.08);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.career-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
 .career-submit-btn:hover {
-  background-color: #e73370;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(135deg, #ff5252 0%, #d63031 100%);
 }
 
+.career-submit-btn:hover::before {
+  left: 100%;
+}
+
+.career-submit-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Enhanced reveal animation */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+  transform: translateY(60px) scale(0.95);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .reveal-on-scroll.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .career-container {
+    padding: 4rem 1rem 2rem 1rem;
+  }
+  
+  .career-jobs {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .career-job {
+    padding: 2rem 1.5rem;
+  }
+  
+  .career-job h3 {
+    font-size: 1.2rem;
+  }
+  
+  .career-form {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem;
+  }
+  
+  .career-input {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  
+  .career-submit-btn {
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+  }
 } 
