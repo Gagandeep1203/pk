@@ -12,41 +12,7 @@ import img8 from '../assets/img/Screenshot2025-07-18144907.png';
 import img9 from '../assets/img/Screenshot2025-07-18145009.png';
 
 const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
-
-function ScrollProgressLine() {
-  const [progress, setProgress] = useState(0);
-  const checkpoints = 6;
-
-  useEffect(() => {
-    function onScroll() {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = docHeight > 0 ? scrollTop / docHeight : 0;
-      setProgress(scrolled);
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  return (
-    <div className="scroll-progress-vertical enhanced">
-      <div
-        className="scroll-progress-bar enhanced"
-        style={{ height: `${progress * 100}%` }}
-      />
-      {/* Checkpoints (dots) */}
-      {Array.from({ length: checkpoints }).map((_, i) => (
-        <div
-          key={i}
-          className={`scroll-progress-dot${progress >= i / (checkpoints - 1) ? ' active' : ''}`}
-          style={{ top: `calc(${(i / (checkpoints - 1)) * 100}% - 7px)` }}
-        />
-      ))}
-    </div>
-  );
-}
-
+ 
 function AnimatedGallery() {
   // Center of the container
   const centerX = 50; // vw
@@ -61,7 +27,7 @@ function AnimatedGallery() {
 
   return (
     <div className="animated-gallery-container">
-      <ScrollProgressLine />
+     
       {images.map((src, idx) => {
         const [imgRef, visible] = revealStates[idx];
         const angle = (idx / images.length) * 2 * Math.PI;
