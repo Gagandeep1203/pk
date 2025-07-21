@@ -3,8 +3,6 @@ import './Home.css';
 
 function Home() {
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)');
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [isClicking, setIsClicking] = useState(false);
 
   useEffect(() => {
     const handleWindowMouseMove = (e) => {
@@ -17,17 +15,10 @@ function Home() {
       const rotateX = ((y - centerY) / centerY) * 10; // max 10deg
       const rotateY = ((x - centerX) / centerX) * 16; // max 16deg
       setTransform(`perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`);
-      setCursorPos({ x, y });
     };
-    const handleMouseDown = () => setIsClicking(true);
-    const handleMouseUp = () => setIsClicking(false);
     window.addEventListener('mousemove', handleWindowMouseMove);
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
     return () => {
       window.removeEventListener('mousemove', handleWindowMouseMove);
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
 
@@ -54,15 +45,6 @@ function Home() {
           </button>
         </div>
       </section>
- 
-      {/* Custom Cursor */}
-      <div
-        className={`custom-cursor${isClicking ? ' clicking' : ''}`}
-        style={{
-          left: cursorPos.x + 'px',
-          top: cursorPos.y + 'px',
-        }}
-      />
     </div>
   );
 }
